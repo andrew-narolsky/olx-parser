@@ -14,8 +14,17 @@ class StoreSubscriptionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email', 'max:255'],
-            'url' => ['required', 'url', 'max:2048'],
+            'email' => [
+                'required',
+                'email',
+                'max:255'
+            ],
+            'url' => [
+                'required',
+                'url',
+                'regex:/^https?:\/\/(www\.)?olx\.ua\/d\/(uk|ru)\/obyavlenie\/.+/',
+                'max:2048'
+            ],
         ];
     }
 }

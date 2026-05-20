@@ -27,24 +27,30 @@
             <label class="text-sm font-medium">Email</label>
             <input type="email"
                    name="email"
+                   placeholder="example@gmail.com"
                    class="w-full border p-2 rounded"
                    value="{{ old('email') }}">
 
             @error('email')
             <p class="text-red-500 text-sm">{{ $message }}</p>
             @enderror
+
+            <p class="text-xs text-gray-500 mt-1">We will send price change alerts to this email</p>
         </div>
 
         <div>
             <label class="text-sm font-medium">OLX URL</label>
             <input type="url"
                    name="url"
+                   placeholder="https://www.olx.ua/d/uk/obyavlenie/..."
                    class="w-full border p-2 rounded"
                    value="{{ old('url') }}">
 
             @error('url')
             <p class="text-red-500 text-sm">{{ $message }}</p>
             @enderror
+
+            <p class="text-xs text-gray-500 mt-1">Paste full OLX listing URL</p>
         </div>
 
         <button class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
