@@ -14,12 +14,17 @@ class DispatchOlxChecksJob implements ShouldQueue
 
     public function handle(): void
     {
-        Subscription::query()
-            ->select('url')
+        $urls = Subscription::query()
+            ->select('subscriptions.url')
+            ->join('users', 'users.id', '=', 'subscriptions.user_id')
+            ->whereNotNull('users.email_verified_at')
             ->distinct()
-            ->pluck('url')
-            ->each(function ($url) {
-                CheckOlxPriceJob::dispatch($url);
-            });
+            ->pluck('url');
+
+        if ($urls->isEmpty()) {
+            return;
+        }
+
+        $urls->each(fn($url) => CheckOlxPriceJob::dispatch($url));
     }
 }
