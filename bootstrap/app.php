@@ -14,7 +14,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withSchedule(function (Schedule $schedule) {
         $schedule->job(DispatchOlxChecksJob::class)
-            ->hourly();
+            ->everyMinute();
+//            ->hourly();
     })
     ->withMiddleware(function (Middleware $middleware): void {
     })
