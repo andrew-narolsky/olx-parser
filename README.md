@@ -10,7 +10,7 @@ Two implementations of `PriceServiceInterface` are available:
 
 Fetches the listing page HTML and extracts the price from the `application/ld+json` structured data block.
 
-### `OlxApiPriceService`
+### `OlxApiPriceService *`
 
 Fetches the price directly from the OLX internal JSON API — no HTML parsing required.
 
@@ -43,4 +43,4 @@ $this->app->bind(PriceServiceInterface::class, OlxApiPriceService::class);
 
 ---
 
-For more details see [docs/development.md](docs/development.md).
+* For more details see [docs/development.md](docs/development.md).
